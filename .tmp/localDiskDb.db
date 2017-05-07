@@ -1,0 +1,341 @@
+{
+  "data": {
+    "wines": [
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Red",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 1,
+        "createdAt": "2017-05-06T14:59:23.670Z",
+        "updatedAt": "2017-05-06T15:09:25.948Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Red",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 2,
+        "createdAt": "2017-05-06T15:05:21.944Z",
+        "updatedAt": "2017-05-06T15:09:36.233Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Red",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 3,
+        "createdAt": "2017-05-06T15:12:19.065Z",
+        "updatedAt": "2017-05-06T15:12:19.065Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "White",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 4,
+        "createdAt": "2017-05-06T15:12:36.837Z",
+        "updatedAt": "2017-05-06T15:12:36.837Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "White",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 5,
+        "createdAt": "2017-05-06T15:12:40.184Z",
+        "updatedAt": "2017-05-06T15:12:40.184Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "White",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 6,
+        "createdAt": "2017-05-06T15:12:40.593Z",
+        "updatedAt": "2017-05-06T15:12:40.593Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "White",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 7,
+        "createdAt": "2017-05-06T15:12:41.018Z",
+        "updatedAt": "2017-05-06T15:12:41.018Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Red",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 8,
+        "createdAt": "2017-05-06T15:12:45.090Z",
+        "updatedAt": "2017-05-06T15:12:45.090Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Red",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 9,
+        "createdAt": "2017-05-06T15:12:45.241Z",
+        "updatedAt": "2017-05-06T15:12:45.241Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Red",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 10,
+        "createdAt": "2017-05-06T15:12:45.396Z",
+        "updatedAt": "2017-05-06T15:12:45.396Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Red",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 11,
+        "createdAt": "2017-05-06T15:12:45.531Z",
+        "updatedAt": "2017-05-06T15:12:45.531Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 12,
+        "createdAt": "2017-05-06T15:12:50.390Z",
+        "updatedAt": "2017-05-06T15:12:50.390Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 13,
+        "createdAt": "2017-05-06T15:12:50.530Z",
+        "updatedAt": "2017-05-06T15:12:50.530Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 14,
+        "createdAt": "2017-05-06T15:12:50.697Z",
+        "updatedAt": "2017-05-06T15:12:50.697Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 15,
+        "createdAt": "2017-05-06T15:12:51.551Z",
+        "updatedAt": "2017-05-06T15:12:51.551Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 16,
+        "createdAt": "2017-05-06T15:12:52.046Z",
+        "updatedAt": "2017-05-06T15:12:52.046Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 17,
+        "createdAt": "2017-05-06T15:12:52.213Z",
+        "updatedAt": "2017-05-06T15:12:52.213Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 18,
+        "createdAt": "2017-05-06T15:12:52.383Z",
+        "updatedAt": "2017-05-06T15:12:52.383Z"
+      },
+      {
+        "name": "Unamed",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "type": "Rakija",
+        "price": 0,
+        "alcoholPercentage": "0.00",
+        "availability": "available",
+        "year": "X21X",
+        "numberPerCase": 12,
+        "costPerBottle": 0,
+        "id": 19,
+        "createdAt": "2017-05-06T15:12:52.628Z",
+        "updatedAt": "2017-05-06T15:12:52.628Z"
+      }
+    ]
+  },
+  "schema": {
+    "wines": {
+      "name": {
+        "type": "string",
+        "defaultsTo": "Unamed"
+      },
+      "description": {
+        "type": "string",
+        "defaultsTo": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      },
+      "type": {
+        "type": "string",
+        "enum": [
+          "Red",
+          "White",
+          "Rose",
+          "Rakija"
+        ],
+        "defaultsTo": "Red"
+      },
+      "price": {
+        "type": "integer"
+      },
+      "alcoholPercentage": {
+        "type": "string",
+        "defaultsTo": "0.00"
+      },
+      "availability": {
+        "type": "string",
+        "enum": [
+          "available",
+          "coming-soon,",
+          "on-its-way",
+          "out-of-stock",
+          "not-returning"
+        ],
+        "defaultsTo": "available"
+      },
+      "year": {
+        "type": "string",
+        "defaultsTo": "X21X"
+      },
+      "numberPerCase": {
+        "type": "integer",
+        "defaultsTo": 12
+      },
+      "costPerBottle": {
+        "type": "float",
+        "defaultsTo": 0
+      },
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "wines": {
+      "id": 19
+    }
+  }
+}
