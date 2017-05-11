@@ -3,6 +3,7 @@ package main
 import (
     "encoding/json"
     "fmt"
+    "strconv"
     "database/sql"
     // "go-echo-vue/handlers"
     "log"
@@ -85,7 +86,6 @@ func getProducts (db *sql.DB) httprouter.Handle{
     		if err != nil {
     			log.Fatal(err)
     		}
-    		fmt.Println(product)
         jsonResponse.AddProduct(product)
 
     	}
@@ -96,18 +96,77 @@ func getProducts (db *sql.DB) httprouter.Handle{
     }
 }
 
-func postProducts (db *sql.DB) httprouter.Handle{
+func getSingleProduct (db *sql.DB) httprouter.Handle{
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
       w.Header().Set("Content-Type", "application/json")
 
-      insertStmt, err := db.Prepare("INSERT INTO Products (id,name, description, type, price,alcoholPercentage,availability,year,bottlesPerCase, costPerBottle) VALUES (null,'Carberator salmon', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Red', '9.75', '11.00', 'available', '2017', 6, 9.75);")
-      // insertStmt, err := db.Prepare("SELECT * from Products")
-      _, err = insertStmt.Exec()
+
+
+      // selectStmt, err := db.Prepare()
+      rows, err := db.Query("SELECT * from Products where id=?",ps.ByName("id"))
       if err != nil {
         fmt.Println("Error while selecting: %s", err)
       }
+      // defer rows.close()
+      // jsonResponse := ProductsResponse{Products:[]Product{} }
+      var product Product
 
-      // fmt.Fprint(w, "nigger2")
+      for rows.Next() {
+    		err = rows.Scan(&product.Id, &product.Name, &product.Description,&product.Type, &product.Price, &product.AlcoholPercentage, &product.Availability,&product.Year, &product.BottlesPerCase, &product.CostPerBottle, &product.Date)
+
+
+
+    		if err != nil {
+    			log.Fatal(err)
+    		}
+        json.NewEncoder(w).Encode(product)
+
+    	}
+
+
+
+    }
+}
+
+// Adds a product to the database and then redirects to the new items URL /products/:id
+func postProducts (db *sql.DB) httprouter.Handle{
+  return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+
+    	name := r.PostFormValue("name")
+    	description := r.PostFormValue("description")
+      typ := r.PostFormValue("typ")
+      price := r.PostFormValue("price")
+      alcoholPercentage := r.PostFormValue("alcoholPercentage")
+      availability := r.PostFormValue("availability")
+      year := r.PostFormValue("year")
+      bottlesPerCase := r.PostFormValue("bottlesPerCase")
+      costPerBottle := r.PostFormValue("costPerBottle")
+
+
+      _, err := db.Exec("INSERT INTO Products (name, description, type, price,alcoholPercentage,availability,year,bottlesPerCase, costPerBottle) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?);", name,description,typ,price,alcoholPercentage,availability,year,bottlesPerCase,costPerBottle)
+
+      if err != nil {
+        log.Fatal(err)
+      }
+
+
+      // Get the new product with the highest ID
+      rows, err := db.Query("SELECT id from Products where id=(select max(id) from Products);")
+      if err != nil {
+        log.Fatal(err)
+      }
+
+      var product Product
+
+      // Redirect to the product id page
+      for rows.Next() {
+    		err = rows.Scan(&product.Id)
+    		if err != nil {
+    			log.Fatal(err)
+    		}
+        http.Redirect(w, r, "/products/" + strconv.Itoa(product.Id), 301)
+    	}
+
     }
 }
 
@@ -119,10 +178,16 @@ func main() {
 
   router := httprouter.New()
 
-  router.GET("/products", getProducts(db))
-  router.GET("/products/:id", getProducts(db))
 
-  router.POST("/products", postProducts(db))
+  // Get products
+  router.GET("/products/", getProducts(db))
+  router.GET("/products/:id", getSingleProduct(db))
+
+  // Post products
+  router.POST("/products/", postProducts(db))
+
+  // Delete product
+  router.DELETE("/products/", deleteProduct(db))
 
 
   log.Fatal(http.ListenAndServe(":8080", router))
