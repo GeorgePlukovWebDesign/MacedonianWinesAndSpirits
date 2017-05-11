@@ -51,6 +51,39 @@ func migrate(db *sql.DB) {
         panic(err)
     }
 }
+
+
+func getProducts (db *sql.DB) httprouter.Handle{
+  return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+      w.Header().Set("Content-Type", "application/json")
+
+      selectStmt, err := db.Prepare("SELECT * from Products")
+      _, err = selectStmt.Exec()
+      if err != nil {
+        fmt.Println("Error while selecting: %s", err)
+      }
+
+      fmt.Fprint(w, "nigger")
+    }
+}
+
+func postProducts (db *sql.DB) httprouter.Handle{
+  return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+      w.Header().Set("Content-Type", "application/json")
+
+
+      selectStmt, err := db.Prepare("SELECT * from Products")
+      _, err = selectStmt.Exec()
+      if err != nil {
+        fmt.Println("Error while selecting: %s", err)
+      }
+
+      fmt.Fprint(w, "nigger2")
+    }
+}
+
+
+
 func main() {
   db := initDB("MacedonianWinesAndSpirits.db")
   migrate(db)
