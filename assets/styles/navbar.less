@@ -1,66 +1,62 @@
-ul {
+.navbar{
+  background-color: @off-white;
   position: fixed;
-  display: flex;
-  align-items: center;
   width: 100%;
-
   height: 50px;
 
-
+  border-bottom: 1px solid black;
 }
 
-li {
-  display: inline-block;
-  color: white;
-  text-align: center;
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  // position:
+  flex-flow: row;
 
-  padding-left: 14px;
-  padding-right: 14px;
-
-  text-decoration: none;
+  background-color: @off-white;
+  height: 100%;
+  width: 100%;
 }
-.link:hover{
-  // background-color: red;
-  // color: @text-color-hover;
+
+.flex-item {
+  flex:1 3 0;
+}
+.flex-item:hover{
+  background-color: @navbar-hover;
   cursor: pointer;
   text-shadow: 0 0 5px @text-shadow;
 }
-#products{
-  justify-content: flex-start;
 
-}
-#reviews{
-  justify-content: flex-start;
-
-}
-#logo-item{
-  flex:1;
-  justify-content: center;
-  margin-top: 50vh;
+.filler{
+  order:2;
+  flex: 2 2 0 !important;
+  pointer-events: none;
 }
 
-#about-us{
-  justify-content: flex-end;
+.start{
+  order: 1;
 
 }
-#empty{
-  justify-content: flex-end;
-  width:3.5em;
+.end{
+  order: 3;
 }
-#empty:active{
-  justify-content: flex-end;
-  hover:none;
+.center-text{
+  vertical-align: middle;
+  text-align: center;
+  line-height:50px;
+  height:50px;
 }
+
 /* Fancy faded line
 TODO: add media queries for phone design
 */
-.faded-line {
-  position: fixed;
-  top:50px;
-  width: 100%;
-  height:2px;
-  background-repeat:no-repeat;
-  background-image:
-        radial-gradient(farthest-side at 100% 0px, #000 0%, rgba(0,0,0,0) 55%),
-        radial-gradient(farthest-side at  0px 0px, #000 0%, rgba(0,0,0,0) 55%);
-}
+// .faded-line {
+//   position: fixed;
+//   top:50px;
+//   width: 100%;
+//   height:2px;
+//   background-repeat:no-repeat;
+//   background-image:
+//         radial-gradient(farthest-side at 100% 0px, #000 0%, rgba(0,0,0,0) 55%),
+//         radial-gradient(farthest-side at  0px 0px, #000 0%, rgba(0,0,0,0) 55%);
+// }
