@@ -1,6 +1,7 @@
 package main
 
 import (
+    "encoding/json"
     "fmt"
     "database/sql"
     // "go-echo-vue/handlers"
@@ -10,18 +11,29 @@ import (
     "net/http"
 )
 
+// Responses
+type ProductsResponse struct{
+  Page   int      `json:"page"`
+  Products []Product `json:"products"`
+}
+func (resp *ProductsResponse) AddProduct(prod Product) []Product{
+    resp.Products = append(resp.Products, prod)
+    return resp.Products
+}
+
+
 type Product struct {
-	Id    int
-	Name string
-	Description  string
-  Type string
-  Price string
-  AlcoholPercentage string
-  availability string
-  year string
-  BottlesPerCase int
-  CostPerBottle float32
-  Date  string
+	Id    int `db:"id"`
+	Name string `db:"name"`
+	Description  string `db:"description"`
+  Type string `db:type`
+  Price string `db:price`
+  AlcoholPercentage string `db:alcoholPercentage`
+  Availability string `db:availability`
+  Year string `db:year`
+  BottlesPerCase int `db:bottlesPerCase`
+  CostPerBottle float32 `db:costPerBottle`
+  Date  string `db:date`
 
 }
 
@@ -43,7 +55,7 @@ func initDB(filepath string) *sql.DB {
 
 func migrate(db *sql.DB) {
     sql := `
-    CREATE TABLE IF NOT EXISTS Products(id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(100),description TEXT default 'none',type TEXT default 'N/A',price TEXT default '0.00',alcoholPercentage TEXT default '00.00', availability TEXT default 'available', year TEXT default '2017', bottlesPerCase INTEGER default 6, costPerBottle REAL deault '10.0',date TEXT );
+    CREATE TABLE IF NOT EXISTS Products(id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(100),description TEXT default 'none',type TEXT default 'N/A',price TEXT default '0.00',alcoholPercentage TEXT default '00.00', availability TEXT default 'available', year TEXT default '2017', bottlesPerCase INTEGER default 6, costPerBottle REAL deault '10.0',date TEXT default CURRENT_TIMESTAMP);
     `
     _, err := db.Exec(sql)
     // Exit if something goes wrong with our SQL statement above
@@ -57,13 +69,30 @@ func getProducts (db *sql.DB) httprouter.Handle{
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
       w.Header().Set("Content-Type", "application/json")
 
-      selectStmt, err := db.Prepare("SELECT * from Products")
-      _, err = selectStmt.Exec()
+
+      // selectStmt, err := db.Prepare()
+      rows, err := db.Query("SELECT * from Products")
       if err != nil {
         fmt.Println("Error while selecting: %s", err)
       }
+      // defer rows.close()
+      jsonResponse := ProductsResponse{Products:[]Product{} }
+      var product Product
 
-      fmt.Fprint(w, "nigger")
+      for rows.Next() {
+    		err = rows.Scan(&product.Id, &product.Name, &product.Description,&product.Type, &product.Price, &product.AlcoholPercentage, &product.Availability,&product.Year, &product.BottlesPerCase, &product.CostPerBottle, &product.Date)
+
+    		if err != nil {
+    			log.Fatal(err)
+    		}
+    		fmt.Println(product)
+        jsonResponse.AddProduct(product)
+
+    	}
+
+        json.NewEncoder(w).Encode(jsonResponse)
+
+
     }
 }
 
@@ -71,14 +100,14 @@ func postProducts (db *sql.DB) httprouter.Handle{
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
       w.Header().Set("Content-Type", "application/json")
 
-
-      selectStmt, err := db.Prepare("SELECT * from Products")
-      _, err = selectStmt.Exec()
+      insertStmt, err := db.Prepare("INSERT INTO Products (id,name, description, type, price,alcoholPercentage,availability,year,bottlesPerCase, costPerBottle) VALUES (null,'Carberator salmon', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Red', '9.75', '11.00', 'available', '2017', 6, 9.75);")
+      // insertStmt, err := db.Prepare("SELECT * from Products")
+      _, err = insertStmt.Exec()
       if err != nil {
         fmt.Println("Error while selecting: %s", err)
       }
 
-      fmt.Fprint(w, "nigger2")
+      // fmt.Fprint(w, "nigger2")
     }
 }
 
@@ -88,22 +117,14 @@ func main() {
   db := initDB("MacedonianWinesAndSpirits.db")
   migrate(db)
 
-  // // Create and execute a insert statement
-  // insertStmt, err := conn.Prepare("INSERT INTO Products (name, description, type, price,alcoholPercentage,availability,year,bottlesPerCase, costPerBottle) VALUES ('Carberator salmon', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'Red', '9.75', '11.00', 'available', '2017', 6, 9.75);")
-  // err = selectStmt.Exec()
-  // if err != nil {
-  //   fmt.Println("Error while inserting: %s", err)
-  // }
-
   router := httprouter.New()
 
-    router.GET("/products", getProducts(db))
-    router.POST("/products", postProducts(db))
+  router.GET("/products", getProducts(db))
+  router.GET("/products/:id", getProducts(db))
 
-    // router.NotFound = &DefaultHandler{}
+  router.POST("/products", postProducts(db))
 
 
+  log.Fatal(http.ListenAndServe(":8080", router))
 
-    log.Fatal(http.ListenAndServe(":8080", router))
-
-  }
+}
