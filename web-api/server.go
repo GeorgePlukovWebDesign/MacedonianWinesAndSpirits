@@ -25,6 +25,32 @@ type Product struct {
 
 }
 
+func initDB(filepath string) *sql.DB {
+    db, err := sql.Open("sqlite3", filepath)
+
+    // Here we check for any db errors then exit
+    if err != nil {
+        panic(err)
+    }
+
+    // If we don't get any errors but somehow still don't get a db connection
+    // we exit as well
+    if db == nil {
+        panic("db nil")
+    }
+    return db
+}
+
+func migrate(db *sql.DB) {
+    sql := `
+    CREATE TABLE IF NOT EXISTS Products(id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(100),description TEXT default 'none',type TEXT default 'N/A',price TEXT default '0.00',alcoholPercentage TEXT default '00.00', availability TEXT default 'available', year TEXT default '2017', bottlesPerCase INTEGER default 6, costPerBottle REAL deault '10.0',date TEXT );
+    `
+    _, err := db.Exec(sql)
+    // Exit if something goes wrong with our SQL statement above
+    if err != nil {
+        panic(err)
+    }
+}
 func main() {
   db := initDB("MacedonianWinesAndSpirits.db")
   migrate(db)
