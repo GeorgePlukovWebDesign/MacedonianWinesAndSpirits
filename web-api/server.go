@@ -100,8 +100,6 @@ func getSingleProduct (db *sql.DB) httprouter.Handle{
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
       w.Header().Set("Content-Type", "application/json")
 
-
-
       // selectStmt, err := db.Prepare()
       rows, err := db.Query("SELECT * from Products where id=?",ps.ByName("id"))
       if err != nil {
@@ -149,7 +147,6 @@ func postProducts (db *sql.DB) httprouter.Handle{
         log.Fatal(err)
       }
 
-
       // Get the new product with the highest ID
       rows, err := db.Query("SELECT id from Products where id=(select max(id) from Products);")
       if err != nil {
@@ -164,12 +161,25 @@ func postProducts (db *sql.DB) httprouter.Handle{
     		if err != nil {
     			log.Fatal(err)
     		}
-        http.Redirect(w, r, "/products/" + strconv.Itoa(product.Id), 301)
+        http.Redirect(w, r, "/products/" + strconv.Itoa(product.Id), 300)
     	}
 
     }
 }
+// TODO: Send back some sort of response
+func deleteSingleProduct (db *sql.DB) httprouter.Handle{
+  return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
+      // selectStmt, err := db.Prepare()
+      _, err := db.Exec("DELETE FROM Products where id=?",ps.ByName("id"))
+      if err != nil {
+        log.Fatal(err)
+      }
+      // w.Header().Set("Content-Type", "text/plain; charset=utf-8") // normal header
+      // w.WriteHeader(http.StatusOK)
+
+    }
+}
 
 
 func main() {
@@ -187,7 +197,7 @@ func main() {
   router.POST("/products/", postProducts(db))
 
   // Delete product
-  router.DELETE("/products/", deleteProduct(db))
+  router.DELETE("/products/:id", deleteSingleProduct(db))
 
 
   log.Fatal(http.ListenAndServe(":8080", router))
