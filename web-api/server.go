@@ -176,7 +176,7 @@ func deleteSingleProduct (db *sql.DB) httprouter.Handle{
         log.Fatal(err)
       }
       // w.Header().Set("Content-Type", "text/plain; charset=utf-8") // normal header
-      // w.WriteHeader(http.StatusOK)
+      //x w.WriteHeader(http.StatusOK)
 
     }
 }
