@@ -1,4 +1,5 @@
-<template>
+<template id="navbar">
+
 <div class="navbar">
   <div class="flex-container">
     <div id="products" class="flex-item start">
@@ -8,7 +9,7 @@
     </div>
     <div id="review" class="flex-item start">
       <div class="center-text">
-        Review
+        Reviews
       </div>
     </div>
 
@@ -42,16 +43,12 @@ export default {
   position: fixed;
   width: 100%;
   height: 50px;
-
-  /*border-bottom: 1px solid black;*/
 }
 
 .flex-container {
   display: -webkit-flex;
   display: flex;
-  /*// position:*/
   flex-flow: row;
-
   background-color: white;
   height: 100%;
   width: 100%;
@@ -89,10 +86,10 @@ export default {
 }
 
 
-/* Fancy faded line
-TODO: add media queries for phone design
+/*
+    Fancy faded line
+    TODO: add media queries for phone design
 */
-
 .faded-line {
   position: fixed;
   top: 50px;

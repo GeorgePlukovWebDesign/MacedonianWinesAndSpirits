@@ -1,13 +1,131 @@
 <template>
 <div id="app">
 
-  <router-view></router-view>
+    <navbar></navbar>
+    <dynatitle></dynatitle>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>a
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>a
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
 </div>
 </template>
 
 <script>
+import navbar from './components/Navbar.vue'
+import dynatitle from './components/Dynatitle.vue'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components:{navbar, dynatitle}
 }
 </script>
 
@@ -28,9 +146,11 @@ img,form,input,h1,h2,h3,h4,h5,h6,pre {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*text-align: center;*/
-  /*color: #2c3e50;*/
+  overflow-y: scroll;
+  width: 100%;
+  height: 100vh;
+
   color: #333 !important;
-  /*margin-top: 60px;*/
+
 }
 </style>
