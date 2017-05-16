@@ -1,7 +1,7 @@
 <template id="titlepage">
 
   <div id="title-page" >
-    
+
   </div>
 
 </template>

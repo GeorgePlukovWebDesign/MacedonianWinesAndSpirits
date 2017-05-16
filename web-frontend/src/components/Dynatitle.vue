@@ -4,7 +4,6 @@
     <span v-for="word in words">
       <span class="letter">{{word[0]}}</span><span class="word">{{word[1]}}</span>
     </span>
-
   </h1>
 </template>
 <script>
@@ -32,7 +31,7 @@ export default {
 
   /* Styling */
   text-align: left;
-  font-size: 8em;
+  font-size: 2em;
   font-weight: normal;
 
   /* translations and animations */
@@ -40,13 +39,11 @@ export default {
   transition: transform .4s ease;
   transition: font-size 4s ease;
 
-  /*font-size*/
-
 
 }
 @media (max-width: 1200px) {
   .title{
-    font-size: 5em;
+    font-size: 2em;
     transition: transform .6s;
     transition: font-size .2s ease;
 

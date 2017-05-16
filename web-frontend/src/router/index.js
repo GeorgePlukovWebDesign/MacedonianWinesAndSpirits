@@ -16,7 +16,8 @@ export default new Router({
            dynatitle: Dynatitle,
            titlepage: Titlepage,
            Products: Products
-       }
+       },
+       props: {default: true}
     }
   ]
 })

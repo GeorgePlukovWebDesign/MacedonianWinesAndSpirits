@@ -1,57 +1,87 @@
 <template id="products">
-<div class="products">
-  <div class="flex-container">
+<div class="products ">
+  <h2>Products</h2>
+  <div class="flex-container" >
+    <h3>Red -</h3>
 
-    <div>asd</div>
+    <div  class="faded-line"></div>
+    <div class="" v-for="item in prod" v-if="item.Type == 'Red'">
+      <single-item :bottle="item" ></single-item>
+    </div>
+
+    <h3>White -</h3>
+    <div class="faded-line"></div>
+    <div class="" v-for="item in prod" v-if="item.Type == 'White'">
+      <single-item :bottle="item" ></single-item>
+    </div>
+
+    <h3>Rose -</h3>
+    <div class="faded-line"></div>
+    <div class="" v-for="item in prod" v-if="item.Type == 'Rose'">
+      <single-item :bottle="item" ></single-item>
+    </div>
+
+    <h3>Rakija -</h3>
+    <div class="faded-line"></div>
+    <div class="" v-for="item in prod" v-if="item.Type == 'Rakija'">
+      <single-item :test="item" ></single-item>
+    </div>
+
+
+    <br><br><br><br>
+    <br><br><br><br>
+
   </div>
 </div>
 </template>
 
 <script>
-import axios from 'axios';
+import singleItem from './SingleItem.vue';
 
-
-axios.get(`http://localhost:8081/products/`)
-  .then(response => {
-    // JSON responses are automatically parsed.
-    this.posts = response.data
-    console.log(this.posts)
-    // alert(this.posts["producs"])
-  })
-  .catch(e => {
-  // this.errors.push(e)/
-  })
 
 export default {
   name: 'products',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-
+  props:['prod'],
+  components: {'single-item': singleItem}
 }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.products{
+  padding-left:10%;
+  padding-right:10%;
+}
 .flex-container {
   display: -webkit-flex;
   display: flex;
-  flex-wrap: -webkit-column;
-  flex-wrap: column;
+  flex-direction: -webkit-column;
+  flex-direction: column;
   height: 100%;
   width: 100%;
 }
-
-.flex-item {
-  flex: 1 1 0;
+h2{
+  font-weight: normal;
 }
+h3{
+  flex:1 1 0;
+  font-weight: lighter;
+  margin-top:10px;
 
-.flex-item:hover {
-  background-color: lightgrey;
+}
+.plus{
+  font-weight: lighter;
+  /*font-family: 'Verdana';*/
   cursor: pointer;
-  text-shadow: 0 0 5px #333;
+}
+.faded-line {
+  width: 100%;
+  height: 2px;
+  border-bottom: 1px solid grey;
+}
+.test {
+  color:red;
+  font-size: 300px;
 }
 </style>

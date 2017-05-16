@@ -2,9 +2,10 @@
 <div id="app">
 
     <navbar></navbar>
-    <dynatitle></dynatitle>
+    <!-- <dynatitle></dynatitle> -->
     <titlepage></titlepage>
-    <products></products>
+
+    <products v-bind:prod="prod"></products>
 </div>
 </template>
 
@@ -13,10 +14,27 @@ import navbar from './components/Navbar.vue'
 import dynatitle from './components/Dynatitle.vue'
 import titlepage from './components/Titlepage.vue'
 import products from './components/Products.vue'
+import axios from 'axios'
 
 export default {
   name: 'app',
-  components:{navbar, dynatitle, titlepage, products}
+  components:{navbar, dynatitle, titlepage, products},
+  data () {
+    return {
+      prod:[]
+    }
+  },
+  mounted: function(){
+    axios.get(`http://localhost:8081/products/`)
+    .then(response => {
+        // JSON responses are automatically parsed.
+        this.prod = response.data.products
+        console.log(this.prod)
+    })
+    .catch(e => {
+      // this.errors.push(e)/
+    })
+  }
 }
 </script>
 
