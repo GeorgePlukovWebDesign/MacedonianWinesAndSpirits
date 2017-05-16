@@ -3,135 +3,30 @@
 
     <navbar></navbar>
     <dynatitle></dynatitle>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>a
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>a
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+    <titlepage></titlepage>
+    <products></products>
 </div>
 </template>
 
 <script>
 import navbar from './components/Navbar.vue'
 import dynatitle from './components/Dynatitle.vue'
+import titlepage from './components/Titlepage.vue'
+import products from './components/Products.vue'
 
 export default {
   name: 'app',
-  components:{navbar, dynatitle}
+  components:{navbar, dynatitle, titlepage, products}
 }
 </script>
 
 <style>
+html,body{
+  overflow: hidden;
+}
 html,body,div,p,span,ul,li,ol,textarea{
   font-family: 'Open Sans', sans-serif;
+
   color: #333 !important;
 }
 img,form,input,h1,h2,h3,h4,h5,h6,pre {

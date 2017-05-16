@@ -32,7 +32,7 @@ export default {
 
   /* Styling */
   text-align: left;
-  font-size: 10em;
+  font-size: 8em;
   font-weight: normal;
 
   /* translations and animations */
