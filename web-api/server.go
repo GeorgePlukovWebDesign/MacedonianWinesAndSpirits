@@ -33,7 +33,6 @@ type Product struct {
   Availability string `db:availability`
   Year string `db:year`
   BottlesPerCase int `db:bottlesPerCase`
-  CostPerBottle float32 `db:costPerBottle`
   Date  string `db:date`
 
 }
@@ -56,7 +55,7 @@ func initDB(filepath string) *sql.DB {
 
 func migrate(db *sql.DB) {
     sql := `
-    CREATE TABLE IF NOT EXISTS Products(id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(100),description TEXT default 'none',type TEXT default 'N/A',price TEXT default '0.00',alcoholPercentage TEXT default '00.00', availability TEXT default 'available', year TEXT default '2017', bottlesPerCase INTEGER default 6, costPerBottle REAL deault '10.0',date TEXT default CURRENT_TIMESTAMP);
+    CREATE TABLE IF NOT EXISTS Products(id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(100),description TEXT default 'none',type TEXT default 'N/A',price TEXT default '0.00',alcoholPercentage TEXT default '00.00', availability TEXT default 'available', year TEXT default '2017', bottlesPerCase TEXT default 6, date TEXT default CURRENT_TIMESTAMP);
     `
     _, err := db.Exec(sql)
     // Exit if something goes wrong with our SQL statement above
@@ -69,50 +68,62 @@ func migrate(db *sql.DB) {
 func getProducts (db *sql.DB) httprouter.Handle{
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
       w.Header().Set("Content-Type", "application/json")
+      w.Header().Set("Access-Control-Allow-Origin", "*")
 
-
-      // selectStmt, err := db.Prepare()
-      rows, err := db.Query("SELECT * from Products")
+      rows, err := db.Query("SELECT id,name,description,type,price,alcoholPercentage,availability,year,bottlesPerCase,date from Products")
       if err != nil {
         fmt.Println("Error while selecting: %s", err)
       }
-      // defer rows.close()
+
       jsonResponse := ProductsResponse{Products:[]Product{} }
       var product Product
 
       for rows.Next() {
-    		err = rows.Scan(&product.Id, &product.Name, &product.Description,&product.Type, &product.Price, &product.AlcoholPercentage, &product.Availability,&product.Year, &product.BottlesPerCase, &product.CostPerBottle, &product.Date)
+    		err = rows.Scan(
+          &product.Id,
+          &product.Name,
+          &product.Description,
+          &product.Type,
+          &product.Price,
+          &product.AlcoholPercentage,
+          &product.Availability,
+          &product.Year,
+          &product.BottlesPerCase,
+          &product.Date)
+
 
     		if err != nil {
     			log.Fatal(err)
     		}
         jsonResponse.AddProduct(product)
-
     	}
-
-        json.NewEncoder(w).Encode(jsonResponse)
-
-
+      json.NewEncoder(w).Encode(jsonResponse)
     }
 }
 
 func getSingleProduct (db *sql.DB) httprouter.Handle{
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+
       w.Header().Set("Content-Type", "application/json")
 
-      // selectStmt, err := db.Prepare()
-      rows, err := db.Query("SELECT * from Products where id=?",ps.ByName("id"))
+      rows, err := db.Query("SELECT * from Products where id=?", ps.ByName("id"))
       if err != nil {
         fmt.Println("Error while selecting: %s", err)
       }
-      // defer rows.close()
-      // jsonResponse := ProductsResponse{Products:[]Product{} }
+
       var product Product
 
       for rows.Next() {
-    		err = rows.Scan(&product.Id, &product.Name, &product.Description,&product.Type, &product.Price, &product.AlcoholPercentage, &product.Availability,&product.Year, &product.BottlesPerCase, &product.CostPerBottle, &product.Date)
-
-
+    		err = rows.Scan(&product.Id,
+                        &product.Name,
+                        &product.Description,
+                        &product.Type,
+                        &product.Price,
+                        &product.AlcoholPercentage,
+                        &product.Availability,
+                        &product.Year,
+                        &product.BottlesPerCase,
+                        &product.Date)
 
     		if err != nil {
     			log.Fatal(err)
@@ -120,28 +131,23 @@ func getSingleProduct (db *sql.DB) httprouter.Handle{
         json.NewEncoder(w).Encode(product)
 
     	}
-
-
-
     }
 }
 
 // Adds a product to the database and then redirects to the new items URL /products/:id
-func postProducts (db *sql.DB) httprouter.Handle{
+func postProducts (db *sql.DB) httprouter.Handle {
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
     	name := r.PostFormValue("name")
     	description := r.PostFormValue("description")
-      typ := r.PostFormValue("typ")
+      typ := r.PostFormValue("type")
       price := r.PostFormValue("price")
       alcoholPercentage := r.PostFormValue("alcoholPercentage")
       availability := r.PostFormValue("availability")
       year := r.PostFormValue("year")
-      bottlesPerCase := r.PostFormValue("bottlesPerCase")
-      costPerBottle := r.PostFormValue("costPerBottle")
+      bottlesPerCase, err := strconv.ParseInt(r.PostFormValue("bottlesPerCase"),10,64)
 
-
-      _, err := db.Exec("INSERT INTO Products (name, description, type, price,alcoholPercentage,availability,year,bottlesPerCase, costPerBottle) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?);", name,description,typ,price,alcoholPercentage,availability,year,bottlesPerCase,costPerBottle)
+      _, err = db.Exec("INSERT INTO Products (name, description, type, price,alcoholPercentage,availability,year,bottlesPerCase) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", name,description,typ,price,alcoholPercentage,availability,year,bottlesPerCase)
 
       if err != nil {
         log.Fatal(err)
@@ -175,8 +181,6 @@ func deleteSingleProduct (db *sql.DB) httprouter.Handle{
       if err != nil {
         log.Fatal(err)
       }
-      // w.Header().Set("Content-Type", "text/plain; charset=utf-8") // normal header
-      //x w.WriteHeader(http.StatusOK)
 
     }
 }
@@ -200,6 +204,6 @@ func main() {
   router.DELETE("/products/:id", deleteSingleProduct(db))
 
 
-  log.Fatal(http.ListenAndServe(":8080", router))
+  log.Fatal(http.ListenAndServe(":8081", router))
 
 }
