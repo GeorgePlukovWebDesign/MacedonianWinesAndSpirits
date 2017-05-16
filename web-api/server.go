@@ -33,8 +33,8 @@ type Product struct {
   Availability string `db:availability`
   Year string `db:year`
   BottlesPerCase int `db:bottlesPerCase`
+  Url string `db:url`
   Date  string `db:date`
-
 }
 
 func initDB(filepath string) *sql.DB {
@@ -55,7 +55,7 @@ func initDB(filepath string) *sql.DB {
 
 func migrate(db *sql.DB) {
     sql := `
-    CREATE TABLE IF NOT EXISTS Products(id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(100),description TEXT default 'none',type TEXT default 'N/A',price TEXT default '0.00',alcoholPercentage TEXT default '00.00', availability TEXT default 'available', year TEXT default '2017', bottlesPerCase TEXT default 6, date TEXT default CURRENT_TIMESTAMP);
+    CREATE TABLE IF NOT EXISTS Products(id INTEGER PRIMARY KEY AUTOINCREMENT,name VARCHAR(100),description TEXT default 'none',type TEXT default 'N/A',price TEXT default '0.00',alcoholPercentage TEXT default '00.00', availability TEXT default 'available', year TEXT default '2017', bottlesPerCase TEXT default 6, url TEXT default 'default', date TEXT default CURRENT_TIMESTAMP);
     `
     _, err := db.Exec(sql)
     // Exit if something goes wrong with our SQL statement above
@@ -70,7 +70,7 @@ func getProducts (db *sql.DB) httprouter.Handle{
       w.Header().Set("Content-Type", "application/json")
       w.Header().Set("Access-Control-Allow-Origin", "*")
 
-      rows, err := db.Query("SELECT id,name,description,type,price,alcoholPercentage,availability,year,bottlesPerCase,date from Products")
+      rows, err := db.Query("SELECT id,name,description,type,price,alcoholPercentage,availability,year,bottlesPerCase,url,date from Products")
       if err != nil {
         fmt.Println("Error while selecting: %s", err)
       }
@@ -89,6 +89,7 @@ func getProducts (db *sql.DB) httprouter.Handle{
           &product.Availability,
           &product.Year,
           &product.BottlesPerCase,
+          &product.Url,
           &product.Date)
 
 
@@ -123,6 +124,7 @@ func getSingleProduct (db *sql.DB) httprouter.Handle{
                         &product.Availability,
                         &product.Year,
                         &product.BottlesPerCase,
+                        &product.Url,
                         &product.Date)
 
     		if err != nil {
@@ -146,8 +148,9 @@ func postProducts (db *sql.DB) httprouter.Handle {
       availability := r.PostFormValue("availability")
       year := r.PostFormValue("year")
       bottlesPerCase, err := strconv.ParseInt(r.PostFormValue("bottlesPerCase"),10,64)
+      url := r.PostFormValue("url")
 
-      _, err = db.Exec("INSERT INTO Products (name, description, type, price,alcoholPercentage,availability,year,bottlesPerCase) VALUES (?, ?, ?, ?, ?, ?, ?, ?);", name,description,typ,price,alcoholPercentage,availability,year,bottlesPerCase)
+      _, err = db.Exec("INSERT INTO Products (name, description, type, price,alcoholPercentage,availability,year,url,bottlesPerCase) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);", name,description,typ,price,alcoholPercentage,availability,year,url,bottlesPerCase)
 
       if err != nil {
         log.Fatal(err)
@@ -176,7 +179,6 @@ func postProducts (db *sql.DB) httprouter.Handle {
 func deleteSingleProduct (db *sql.DB) httprouter.Handle{
   return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 
-      // selectStmt, err := db.Prepare()
       _, err := db.Exec("DELETE FROM Products where id=?",ps.ByName("id"))
       if err != nil {
         log.Fatal(err)
@@ -191,7 +193,6 @@ func main() {
   migrate(db)
 
   router := httprouter.New()
-
 
   // Get products
   router.GET("/products/", getProducts(db))
