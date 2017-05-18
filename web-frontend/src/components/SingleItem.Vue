@@ -1,28 +1,20 @@
 <template id="singleitem">
-<div class="">
-  <h2></h2>
-  <div class="flex-container" >
-    <div class="flex-item">
+<div class="item">
+  <img class="image" src="../assets/wine_bottle.png">
+  <!-- <img v-if="bottle.Url !== 'default'" :src="bottle.Url" :alt="bottle.Name"> -->
+  <div class="text">
 
-      <div class="inline image">
-        <img v-if="item.Url === 'default'" src="assets/placeholder.jpg" :alt="bottle.Name">
-        <img v-if="bottle.Url !== 'default'" :src="bottle.Url" :alt="bottle.Name">
-      </div>
-      <div class="inline text">
-        <span class="name">{{bottle.Name}}</span>
-        <span class="alcohol">{{bottle.AlcoholPercentage}}</span>
-        <span class="price">{{bottle.Price}}</span>
-        <div class="desc">{{bottle.Description}}</div>
+    <h3 class="name">{{bottle.Name}}</h3>
+    <h3 class="alcohol">%{{bottle.AlcoholPercentage}}</h3>
+    <h3 class="price">${{bottle.Price}} per <img class="bottle" src="../assets/wine_bottle.svg" alt="bottle"></h3>
 
-      </div>
+    <div class="desc">{{bottle.Description}}</div>
 
-    </div>
   </div>
 </div>
 </template>
 
 <script>
-
 export default {
   name: 'products',
   props: ["bottle"],
@@ -31,30 +23,51 @@ export default {
       item: {}
     }
   },
-  methods: {
-  }
+  methods: {}
 
 }
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.flex-container{
-  display: flex;
+.item{
+  border: 1px solid grey;
+  margin: 5px 5px 5px 5px;
 }
-.flex-item{
-  width: 50%;
-  /*height: 100px;*/
-  /*max-height: ;*/
+.image {
+  width:12%;
+  display: inline-block;
 }
-.image{
-  display:inline-block;
+
+.text {
+  display: inline-block;
+  width:85%;
+  vertical-align: top;
+  padding: 10px;
 }
-.text{
-  display:inline-block;
+h3{
+  font-size: 1.2em;
+  display: inline-block;
+  font-weight: 100;
 }
-.name{
+.name {
+
+}
+.alcohol{
+  margin-left: 5px;
+  float: right;
+
+}
+.bottle{
+  color: #333;
+  height: 1.2em;
+  vertical-align: middle;
+}
+.price{
+  float: right;
+
+}
+.desc {
 
 }
 </style>
