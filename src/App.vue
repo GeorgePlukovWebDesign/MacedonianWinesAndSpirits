@@ -55,7 +55,8 @@
                         This is our Capstone project. It involves using image processing in real time to analyse basketball shots in motion. The goal is to help users improve their form and accuracy.
                     </div>
                     <div class="github-links">
-                      <span style="background-color:#e34c26; border-radius:50%;"> </span>HTML
+                      <span style="background-color:#e34c26; border-radius:50%;"> </span>
+                      HTML
                     </div>
                   </div>
 
@@ -249,6 +250,10 @@ line {
 .github-title{
   color: #0366d6;
   font-family: Arial;
+}
+.github-desc{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .underline:hover{
   text-decoration: underline;
