@@ -9,11 +9,8 @@
             <a v-on:mouseover="mouseOver(1)" v-on:mouseleave="mouseLeave(1)" href="#">Blog</a>
             <a v-on:mouseover="mouseOver(2)" v-on:mouseleave="mouseLeaveButton(2)" href="#">
               Github
-              <!-- <img class="github" src="./assets/GitHub-Mark-120px.png" alt="Link to George Plukov's github page. www.github.com/GeorgePlukov"> -->
             </a>
-            <a v-on:mouseover="mouseOver(3)" v-on:mouseleave="mouseLeaveButton(3)" href="#">Pinterest</a>
-            <a v-on:mouseover="mouseOver(4)" v-on:mouseleave="mouseLeaveButton(4)" href="#">Insta
-<!-- <img class="github" src="./assets/Insta-Mark-120px.png" alt="Link to George Plukov's github page. www.github.com/GeorgePlukov"> -->
+            <a v-on:mouseover="mouseOver(4)" v-on:mouseleave="mouseLeaveButton(4)" href="#">Instagram
             </a>
 
 
@@ -46,36 +43,56 @@
                     <line x1="11em" y1="10px" x2="83%" y2="10px" />
                   </svg>
                   <div class="github-card" v-show="current_active == 2" v-on:mouseleave="mouseLeave(2)">
+                    <span class="icon">K</span>
+
                     <span class="underline">
-                      <span clas="icon">K</span>
                       <span class="github-title">Capstone/</span><span class="github-title font-bold">FollowThrough-</span>
                     </span>
 
                     <div class="github-desc">
-                        This is our Capstone project. It involves using image processing in real time to analyse basketball shots in motion. The goal is to help users improve their form and accuracy.
+                        An application that helps improve your basketball shot! Track the arc, release height and other stats about your basketball shot.
                     </div>
                     <div class="github-links">
-                      <span style="background-color:#e34c26; border-radius:50%;"> </span>
-                      HTML
+                      Python/OpenCV/PHP
+                    </div>
+                  </div>
+                  <div class="github-card" v-show="current_active == 2" v-on:mouseleave="mouseLeave(2)">
+                    <span class="icon">K</span>
+
+                    <span class="underline">
+                      <span class="github-title font-bold">3D Terrain generator</span>
+                    </span>
+
+                    <div class="github-desc">
+                      A terrain generator built in C++ and opengl. Used to expirement with different terrain generation algorithms. <br />
+                    </div>
+                    <div class="github-links">
+                      C++/OpenGl
+                    </div>
+                  </div>
+                  <div class="github-card" v-show="current_active == 2" v-on:mouseleave="mouseLeave(2)">
+                    <span class="icon">K</span>
+
+                    <span class="underline">
+                      <span class="github-title">Deltahacks/</span><span class="github-title font-bold">FloodWatch-</span>
+                    </span>
+
+                    <div class="github-desc">
+                        Real time natural disaster early warning system. Second place prize winner at deltahacks!
+                    </div>
+                    <div class="github-links">
+                      Python/OpenCV/PHP
                     </div>
                   </div>
 
 
-                  <!-- <div v-show="current_active == 3" v-on:mouseleave="mouseLeave(3)" class="todo1">
 
-                    <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="240" data-pin-scale-width="80" href="https://www.pinterest.com/pinterest/official-news/"></a>
-
-                      - <img class="preview-image" v-bind:src="insta_data['items'][1]['images']['standard_resolution']['url']" alt="">
-
-                      <img class="preview-image" v-bind:src="insta_data['items'][2]['images']['standard_resolution']['url']" alt=""> ->
-                  </div> -->
-
-                    <!-- instagram -->
+                    <!-- Instagram Preview -->
                     <svg v-show="current_active == 4" id="line-instagram" class="line" height="10" width="100%">
-                    <line x1="0px" y1="10px" x2="19.5em" y2="10px"  />
-                    <line class="lighter" x1="19.5em" y1="10px" x2="20em" y2="0px" />
-                    <line class="lighter" x1="20em" y1="0px" x2="20.5em" y2="10px" />
-                    <line x1="20.5em" y1="10px" x2="83%" y2="10px" />
+                    <line x1="0px" y1="10px" x2="15.5em" y2="10px"  />
+                    <line class="lighter" x1="15.5em" y1="10px" x2="16em" y2="0px" />
+                    <line class="lighter" x1="16em" y1="0px" x2="16.5em" y2="10px" />
+                    <line x1="16.5em" y1="10px" x2="83%" y2="10px" />
                   </svg>
                     <div v-show="current_active == 4" v-on:mouseleave="mouseLeave(4)" class="todo1">
 
@@ -186,12 +203,6 @@ line {
 .lighter {
     stroke-width: 0.5;
 }
-
-.todo1 {
-    height: 100%;
-    // border: 1px solid #333;
-    // background-color: red;
-}
 /* Enter and leave animations can use different */
 /* durations and timing functions.              */
 .slide-fade-enter-active {
@@ -227,7 +238,6 @@ line {
 
     display: inline-block;
 
-    // max-height: 150px;
     margin-left: 10px;
     margin-right: 5px;
     border: 1px solid #d1d5da;
@@ -236,7 +246,8 @@ line {
 
 .github-card {
     height: auto;
-    width: 25%;
+    max-width: 23%;
+    min-width: 23%;
 
     display: inline-block;
 
@@ -247,13 +258,24 @@ line {
     border: 1px solid lightgrey;
     border-radius: 10px;
 }
+.icon{
+  color:#586069;
+}
 .github-title{
   color: #0366d6;
   font-family: Arial;
 }
 .github-desc{
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  // min-height: 00px;
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-size: 12px;
+  color: #586069;
+}
+.github-links{
+  color: #586069;
 }
 .underline:hover{
   text-decoration: underline;
