@@ -7,11 +7,11 @@
         <div class="menu raleway">
             <a v-on:mouseover="mouseOver(0)" v-on:mouseleave="mouseLeave(0)" href="#">Gallery</a>
             <a v-on:mouseover="mouseOver(1)" v-on:mouseleave="mouseLeave(1)" href="#">Blog</a>
-            <a v-on:mouseover="mouseOver(2)" v-on:mouseleave="mouseLeave(2)" href="#">
+            <a v-on:mouseover="mouseOver(2)" v-on:mouseleave="mouseLeaveButton(2)" href="#">
               Github
               <!-- <img class="github" src="./assets/GitHub-Mark-120px.png" alt="Link to George Plukov's github page. www.github.com/GeorgePlukov"> -->
             </a>
-            <a v-on:mouseover="mouseOver(3)" v-on:mouseleave="mouseLeave(3)" href="#">Pinterest</a>
+            <a v-on:mouseover="mouseOver(3)" v-on:mouseleave="mouseLeaveButton(3)" href="#">Pinterest</a>
             <a v-on:mouseover="mouseOver(4)" v-on:mouseleave="mouseLeaveButton(4)" href="#">Insta
 <!-- <img class="github" src="./assets/Insta-Mark-120px.png" alt="Link to George Plukov's github page. www.github.com/GeorgePlukov"> -->
             </a>
@@ -28,14 +28,7 @@
                     <line class="lighter" x1="2.5em" y1="0px" x2="3em" y2="10px" />
                     <line x1="3em" y1="10px" x2="83%" y2="10px" />
                   </svg>
-                  <div v-show="current_active == 0" v-on:mouseleave="mouseLeave(0)" class="todo1">
 
-                      <!-- <img class="preview-image" v-bind:src="" alt=""> -->
-
-                      <!-- <img class="preview-image" v-bind:src="" alt=""> -->
-
-                      <img class="preview-image" v-bind:src="insta_data['items'][2]['images']['standard_resolution']['url']" alt="">
-                  </div>
 
 
                   <svg v-show="current_active == 1" id="line-blog" class="line" height="10" width="100%">
@@ -52,23 +45,21 @@
                     <line class="lighter" x1="10.5em" y1="0px" x2="11em" y2="10px" />
                     <line x1="11em" y1="10px" x2="83%" y2="10px" />
                   </svg>
-                  <div v-show="current_active == 2" v-on:mouseleave="mouseLeave(2)" class="todo1">
+                  <div class="github-card" v-show="current_active == 2" v-on:mouseleave="mouseLeave(2)">
+                    <span class="underline">
+                      <span clas="icon">K</span>
+                      <span class="github-title">Capstone/</span><span class="github-title font-bold">FollowThrough-</span>
+                    </span>
 
-                      <!-- <img class="preview-image" v-bind:src="" alt=""> -->
-
-                      <!-- <img class="preview-image" v-bind:src="" alt=""> -->
-
-                      <img class="preview-image" v-bind:src="insta_data['items'][2]['images']['standard_resolution']['url']" alt="">
+                    <div class="github-desc">
+                        This is our Capstone project. It involves using image processing in real time to analyse basketball shots in motion. The goal is to help users improve their form and accuracy.
+                    </div>
+                    <div class="github-links">
+                      <span style="background-color:#e34c26; border-radius:50%;"> </span>HTML
+                    </div>
                   </div>
 
 
-
-                    <svg v-show="current_active == 3" id="line-pinterest" class="line" height="10" width="100%">
-                    <line x1="0px" y1="10px" x2="15em" y2="10px"  />
-                    <line class="lighter" x1="15em" y1="10px" x2="15.5em" y2="0px" />
-                    <line class="lighter" x1="15.5em" y1="0px" x2="16em" y2="10px" />
-                    <line x1="16em" y1="10px" x2="83%" y2="10px" />
-                  </svg>
                   <!-- <div v-show="current_active == 3" v-on:mouseleave="mouseLeave(3)" class="todo1">
 
                     <a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="240" data-pin-scale-width="80" href="https://www.pinterest.com/pinterest/official-news/"></a>
@@ -226,7 +217,7 @@ line {
     // max-height: 150px;
     margin-left: 10px;
     margin-right: 5px;
-    border: 1px solid lightgrey;
+    border: 1px solid #d1d5da;
     border-radius: 10px;
 }
 .preview-image {
@@ -238,7 +229,32 @@ line {
     // max-height: 150px;
     margin-left: 10px;
     margin-right: 5px;
+    border: 1px solid #d1d5da;
+    border-radius: 10px;
+}
+
+.github-card {
+    height: auto;
+    width: 25%;
+
+    display: inline-block;
+
+    // max-height: 150px;
+    margin-left: 10px;
+    margin-right: 5px;
+    padding: 15px 15px 15px 15px;
     border: 1px solid lightgrey;
     border-radius: 10px;
+}
+.github-title{
+  color: #0366d6;
+  font-family: Arial;
+}
+.underline:hover{
+  text-decoration: underline;
+  color:#0366d6;
+}
+.font-bold{
+  font-weight:600;
 }
 </style>
