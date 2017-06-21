@@ -26,8 +26,6 @@
                     <line x1="3em" y1="10px" x2="83%" y2="10px" />
                   </svg>
 
-
-
                   <svg v-show="current_active == 1" id="line-blog" class="line" height="10" width="100%">
                     <line x1="0px" y1="10px" x2="6.25em" y2="10px"  />
                     <line class="lighter" x1="6.25em" y1="10px" x2="6.75em" y2="0px" />
@@ -76,12 +74,11 @@
                     <span class="underline">
                       <span class="github-title">Deltahacks/</span><span class="github-title font-bold">FloodWatch-</span>
                     </span>
-
                     <div class="github-desc">
                         Real time natural disaster early warning system. Second place prize winner at deltahacks!
                     </div>
                     <div class="github-links">
-                      Python/OpenCV/PHP
+                      Python/XBee/Arduino
                     </div>
                   </div>
 
